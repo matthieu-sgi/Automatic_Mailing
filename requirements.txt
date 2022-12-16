@@ -1,0 +1,5 @@
+unidecode
+tqdm
+pandas
+email
+os
