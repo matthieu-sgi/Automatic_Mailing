@@ -32,7 +32,7 @@ NOM = "Nom" # Last name
 PRENOM = "Prenom" # First name
 MAIL = "Mail" # Email address
 
-def write_body(html_path : str, civilite : str, nom: str, prenom : str) -> str:
+def write_body(html_path : str, civilite : str, nom: str, prenom : str = "") -> str:
     """Write the body of the email with the html template and the data from the csv file"""
     with open(html_path, "r",encoding="utf-8") as f:
         body = f.read()
@@ -47,10 +47,10 @@ def write_body(html_path : str, civilite : str, nom: str, prenom : str) -> str:
         else:
             body = body.replace(r"{nom}","")
 
-        if str(prenom) != "nan" :
-            body = body.replace(r"{prenom}", " " + str(prenom).replace(" ",""))
-        else:
-            body = body.replace(r"{prenom}","")
+        # if str(prenom) != "nan" :
+        #     body = body.replace(r"{prenom}", " " + str(prenom).replace(" ",""))
+        # else:
+        #     body = body.replace(r"{prenom}","")
 
         return body
 
@@ -78,7 +78,7 @@ sep : str = ','
     context = ssl.create_default_context()
     server = smtplib.SMTP_SSL(SERVER_NAME, SERVER_PORT, context=context)
     server.login(USERNAME, PASSWORD)
-    for i in tqdm(range(len(dests))):     
+    for i in tqdm(range(len(dests))):    
         if str(dests[MAIL][i]) != "nan":
             msg = MIMEMultipart()
             body = write_body(body_path,dests[CIVILITE][i],dests[NOM][i],dests[PRENOM][i])
