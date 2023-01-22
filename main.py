@@ -23,8 +23,8 @@ USERNAME = getenv("MAIL_USERNAME") # Gmail address
 ATTACHMENT_PATH = getenv("ATTACHMENT_PATH") # Path to the attachment
 RECIPIENTS_PATH = getenv("RECIPIENTS_PATH") # Path to the csv file with recipients data
 
-SERVER_NAME = "smtp.gmail.com"
-SERVER_PORT = 465
+SERVER_NAME = "smtp.gmail.com" # Gmail server
+SERVER_PORT = 465 # Gmail port
 
 # Pandas column names
 CIVILITE = "Salutation"#"civilite" # Mr, Mme, Mlle  #Prenom,Nom,Mail
